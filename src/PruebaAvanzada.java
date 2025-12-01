@@ -1,10 +1,9 @@
 import matematicas.Operaciones;
 
 public class PruebaAvanzada {
-    public class Examen27112025 {
     public static void main(String[] args) {
-        System.out.println("  Pruebas unitarias");
-        System.out.println("**********************");
+        System.out.println("  Pruebas unitarias avanzadas");
+        System.out.println("******************************");
         
         System.out.printf("Función suma: %s\n", Operaciones.suma(5,3)==8 && Operaciones.suma(-5,-3)==-8?"correcto":"fallo");
         System.out.printf("Función suma (casos adicionales): %s\n", Operaciones.suma(5,-3)==2 && Operaciones.suma(-5,3)==-2 && Operaciones.suma(0,0)==0 && Operaciones.suma(0,5)==5?"correcto":"fallo");
@@ -80,6 +79,6 @@ public class PruebaAvanzada {
         System.out.printf("Función esCuadradoPerfecto: %s\n", Operaciones.esCuadradoPerfecto(25) && !Operaciones.esCuadradoPerfecto(8)?"correcto":"falso");
         System.out.printf("Función esCuadradoPerfecto (casos adicionales): %s\n", Operaciones.esCuadradoPerfecto(0) && Operaciones.esCuadradoPerfecto(1) && Operaciones.esCuadradoPerfecto(4) && Operaciones.esCuadradoPerfecto(9) && Operaciones.esCuadradoPerfecto(16)?"correcto":"falso");
         System.out.printf("Función esCuadradoPerfecto (negativos): %s\n", !Operaciones.esCuadradoPerfecto(-4) && !Operaciones.esCuadradoPerfecto(-25)?"correcto":"falso");
-    }
-}
+    } 
+    
 }
