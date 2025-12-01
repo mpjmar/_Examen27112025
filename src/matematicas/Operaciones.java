@@ -45,28 +45,61 @@ public class Operaciones {
     }
 
     public static int resto(int num1, int num2) {
+        if (esIgual(num2, 0))
+            return num1 / num2;  //Capturar excepción
+        int signo = 1;
+        if (esIgual(num1, 0))
+            return 0;
+        if (!(num1 > 0)) {
+            signo = -signo;
+            num1 = -num1;
+        }
         while (esMayor(num1, num2) || esIgual(num1, num2)) {
             num1 = resta(num1, num2);
         } 
-        return num1;
+        return esIgual(signo, 1) ? num1 : -num1;
     }
 
     public static int divide(int num1, int num2) {
         int res = 0;
+        if (esIgual(num2, 0))
+            return num1 % num2;  //Capturar excepción
+        int signo = 1;
+        if (esIgual(num1, 0))
+            return 0;
+        if (!(num1 > 0)) {
+            signo = -signo;
+            num1 = -num1;
+        }
+        if (!(num2 > 0)) {
+            signo = -signo;
+            num2 = -num2;
+        }
         while (num1 > 0) {
             num1 = resta(num1, num2);
             res = suma(res, 1);
         }
-        return res;
+        return esIgual(signo, 1) ? res : -res;
     }
 
     public static int multiplica(int num1, int num2) {
         int res = 0;
+        int signo = 1;
+        if (esIgual(num1, 0) || esIgual(num2, 0))
+            return 0;
+        if (!(num1 > 0)) {
+            signo = -signo;
+            num1 = -num1;
+        }
+        if (!(num2 > 0)) {
+            signo = -signo;
+            num2 = -num2;
+        }
         while (num2 > 0) {
             num2 = dec(num2);
             res = suma(res, num1);
         }
-        return res;
+        return esIgual(signo, 1) ? res : -res;
     }
 
     public static boolean esIgual(int num1, int num2) {
