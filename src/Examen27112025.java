@@ -20,6 +20,6 @@ public class Examen27112025 {
         System.out.printf("Función esMultiplo: %s\n", Operaciones.esMultiplo(25, 5) && !Operaciones.esMultiplo(25, 3)?"correcto":"falso");
         System.out.printf("Función esDivisor: %s\n", Operaciones.esDivisor(5, 25) && !Operaciones.esDivisor(3, 25)?"correcto":"falso");
         System.out.printf("Función esPrimo: %s\n", Operaciones.esPrimo(13) && !Operaciones.esPrimo(4) && !Operaciones.esPrimo(-5) && !Operaciones.esPrimo(1) && !Operaciones.esPrimo(0)?"correcto":"falso");
-        System.out.printf("Función esCuadradoPerfecto: %s\n", Operaciones.esCuadradoPerfecto(25) && !Operaciones.esCuadradoPerfecto(8)?"correcto":"falso");
+        System.out.printf("Función esCuadradoPerfecto: %s\n", Operaciones.esCuadradoPerfecto(25) && !Operaciones.esCuadradoPerfecto(0)?"correcto":"falso");
     }
 }

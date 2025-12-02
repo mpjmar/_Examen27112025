@@ -1,8 +1,12 @@
 package matematicas;
 public class Operaciones {
+
+    //throw new UnsupportedOperationException;
    
     public static boolean esCuadradoPerfecto(int num) {
-        for (int i = 1; esMenor(cuadrado(i), num) || esIgual(cuadrado(i), num); i = inc(i))
+        if (esIgual(num, 0))
+            return true;
+        for (int i = 1; !esMayor(cuadrado(i), num); i = inc(i))
             if (esIgual(cuadrado(i), num))
                 return true;
         return false;
@@ -11,7 +15,7 @@ public class Operaciones {
     public static boolean esPrimo(int num) {
         if (esMenor(num, 2))
             return false;
-        for (int i = 2; esMenor(i, num); i = inc(i)) 
+        for (int i = 2; !esMayor(i, divide(num, 2)); i = inc(i)) 
             if (esIgual(resto(num, i), 0))
                 return false;
         return true;
@@ -26,6 +30,8 @@ public class Operaciones {
     }
 
     public static int potencia(int base, int exp) {
+        if(esMenor(exp, 0))
+            return 0;
         int res = 1;
         while (exp > 0) {
             res = multiplica(res, base);
@@ -35,18 +41,18 @@ public class Operaciones {
     }
 
     public static boolean esDivisor(int num1, int num2) {
+        if (esIgual(num1, 0))
+            return false;
         return esMultiplo(num2, num1);
     }
     
     public static boolean esMultiplo(int num1, int num2) {
-        if (esIgual(resto(num1, num2), 0)) 
-            return true;
-        return false;
+        return (esIgual(resto(num1, num2), 0));
     }
 
     public static int resto(int num1, int num2) {
-        if (esIgual(num2, 0))
-            return num1 / num2;  //Capturar excepción
+        /* if (esIgual(num2, 0))
+            throw new ArithmeticException("División por cero.");
         int signo = 1;
         if (esIgual(num1, 0))
             return 0;
@@ -54,16 +60,17 @@ public class Operaciones {
             signo = -signo;
             num1 = -num1;
         }
-        while (esMayor(num1, num2) || esIgual(num1, num2)) {
+        while (!esMenor(num1, num2)) {
             num1 = resta(num1, num2);
         } 
-        return esIgual(signo, 1) ? num1 : -num1;
+        return esIgual(signo, 1) ? num1 : -num1; */
+        return (resta(num1, multiplica(divide(num1, num2), num2)));
     }
 
     public static int divide(int num1, int num2) {
         int res = 0;
         if (esIgual(num2, 0))
-            return num1 % num2;  //Capturar excepción
+            throw new ArithmeticException("División por cero.");
         int signo = 1;
         if (esIgual(num1, 0))
             return 0;
@@ -75,9 +82,9 @@ public class Operaciones {
             signo = -signo;
             num2 = -num2;
         }
-        while (num1 > 0) {
+        while (!esMenor(num1, num2)) {
             num1 = resta(num1, num2);
-            res = suma(res, 1);
+            res = inc(res);
         }
         return esIgual(signo, 1) ? res : -res;
     }
